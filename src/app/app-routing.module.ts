@@ -11,14 +11,27 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
-  {
-    path: 'inicio',
-    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
-  },
+
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'ordenes',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./ordenes/ordenes.module').then( m => m.OrdenesPageModule)
+
+      },
+      {
+        path: ':ordenesId',
+        loadChildren: () => import ('./ordenes/pages/datos-cliente/datos-cliente.module').then (m => m.DatosClientePageModule )
+      }
+
+    ]
+  },
+
 ];
 
 @NgModule({
