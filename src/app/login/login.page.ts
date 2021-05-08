@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServiceService } from '../service.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ServiceService } from '../service.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private serviceUser: ServiceService) { }
+  constructor(private serviceUser: ServiceService ,private router: Router) { }
 
   ngOnInit() {
   }
@@ -17,6 +18,8 @@ export class LoginPage implements OnInit {
   pass: string = '';
 
   alert_noEntrar: boolean = false;
+
+  
 
   error(){
     this.alert_noEntrar = false;
@@ -30,6 +33,7 @@ export class LoginPage implements OnInit {
     }else{
       this.serviceUser.validar(this.user,this.pass).subscribe((login)=>{
         console.log('OK');
+        this.router.navigate(['inicio']);
       },error=>{
         this.alert_noEntrar = true;
         console.log('NO');

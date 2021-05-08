@@ -12,5 +12,6 @@ export class ServiceService {
   validar(user:string, pass:string){
     const params = `${this.apiUrl}/${user}/${pass}`;
     return this.http.get(params);
+  
   }
 }
