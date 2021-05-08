@@ -1,4 +1,11 @@
 <ion-content [fullscreen]="true">
+  
+  <div *ngIf="alert_noEntrar" class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
+    <ion-icon id="logoAlert" name="alert-circle-outline"></ion-icon> Ingrese un Usuario o Contraseñas Correctos
+    <button type="button" (click)="error()" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>

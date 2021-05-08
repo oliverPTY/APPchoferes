@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(private serviceUser: ServiceService) { }
 
   ngOnInit() {
   }
@@ -15,10 +16,31 @@ export class LoginPage implements OnInit {
   user: string = '';
   pass: string = '';
 
+  alert_noEntrar: boolean = false;
+
+  error(){
+    this.alert_noEntrar = false;
+  }
+
   ingresar(){
-    console.log(this.user, this.pass);
+    if(this.user==='' || this.pass===''){
+      this.alert_noEntrar = true;
+      console.log('NO');
+      
+    }else{
+      this.serviceUser.validar(this.user,this.pass).subscribe((login)=>{
+        console.log('OK');
+      },error=>{
+        this.alert_noEntrar = true;
+        console.log('NO');
+      }
+      )
+    }
+    
+   
     
   }
+
 
 
 }

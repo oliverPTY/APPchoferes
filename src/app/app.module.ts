@@ -7,6 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginPageModule } from './login/login.module';
+import {  HttpClientModule  } from "@angular/common/http";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { LoginPageModule } from './login/login.module';
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    LoginPageModule
+    LoginPageModule,
+    HttpClientModule
   
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
