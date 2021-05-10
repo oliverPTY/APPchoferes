@@ -14,14 +14,15 @@
                 </ion-list-header>  
             
     
-            <ion-item *ngFor="let item of ordenes" [routerLink]="['/ordenesDetalles',item.idorden |  slice:3:12]">
+            <ion-item *ngFor="let item of ordenes" [routerLink]="['/ordenesDetalles',item.idorden]">
+              <!---|  slice:3:12-->
               <ion-avatar slot="start">
                 <img id="imgOrdenes" src="../../assets/icon/pedido.png">
               </ion-avatar>
               <ion-label>
-                <h2>Orden {{item.idorden |  slice:3:12}}</h2>
-                <h3>Nombre de la persona</h3>
-                <p>Direccion</p>
+                <h2>Orden <strong>{{item.idorden}}</strong></h2>
+                <h3>{{item.Direccion}}</h3>
+                <p></p>
               </ion-label>
             </ion-item>
         </ion-list>

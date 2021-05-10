@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from 'src/app/service.service';
 
 @Component({
   selector: 'app-detalle-orden',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetalleOrdenPage implements OnInit {
 
-  constructor() { }
+  constructor(private servicio: ServiceService) { }
 
   ngOnInit() {
+
   }
 
 }
