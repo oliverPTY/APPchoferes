@@ -9,32 +9,37 @@
 </ion-header>
 
 <ion-content>
-        <ion-list>
-            <ion-list-header *ngIf="ordenes!='' ">
-              Ordenes Activas
-            </ion-list-header>
-                <ion-list-header *ngIf="ordenes=='' ">
-                    No hay Ordenes Disponibles
-                </ion-list-header>  
-            
-    
+    <ion-list>
+        <ion-list-header *ngIf="ordenes!='' ">
+            Ordenes Activas
+        </ion-list-header>
+        <ion-list-header *ngIf="ordenes=='' ">
+            No hay Ordenes Disponibles
+        </ion-list-header>
+
+        <ion-card>
             <ion-item *ngFor="let item of ordenes" [routerLink]="['/ordenesDetalles',item.idorden]">
-              <!---|  slice:3:12-->
-              <ion-avatar slot="start">
-                <img id="imgOrdenes" src="../../assets/icon/pedido.png">
-              </ion-avatar>
-              <ion-label>
-                <h2>Orden <strong>{{item.idorden}}</strong></h2>
-                <h3>{{item.Direccion}}</h3>
-                <p></p>
-              </ion-label>
+                <!---|  slice:3:12-->
+
+                <form>
+                    <h2>
+                        <ion-icon name="ticket-outline" id="iconoCabecera"></ion-icon> Orden <strong> {{ item.idorden}}</strong></h2>
+
+                    <br>
+                    <ion-label> <strong>Direccion:</strong> </ion-label>
+                    <ion-input>
+                        <h1></h1> {{item.Direccion}} </ion-input>
+                    <p></p>
+                </form>
+
             </ion-item>
-        </ion-list>
+        </ion-card>
+    </ion-list>
 
 
-       
-          
-        
-    
+
+
+
+
 
 </ion-content>
