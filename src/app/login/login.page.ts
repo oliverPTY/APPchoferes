@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../service.service';
 
@@ -19,8 +19,7 @@ export class LoginPage implements OnInit {
 
   alert_noEntrar: boolean = false;
 
-  
-
+  userInfo: string[] = [];
   error(){
     this.alert_noEntrar = false;
   }
@@ -32,17 +31,17 @@ export class LoginPage implements OnInit {
       
     }else{
       this.serviceUser.validar(this.user,this.pass).subscribe((login)=>{
-        console.log('OK');
-        this.router.navigate(['inicio']);
+        this.userInfo = login;
+        console.log(login);
+        
+       this.router.navigate(['ordenes',login.userid]);
       },error=>{
         this.alert_noEntrar = true;
         console.log('NO');
       }
       )
     }
-    
-   
-    
+     
   }
 
 

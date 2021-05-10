@@ -11,7 +11,14 @@ export class ServiceService {
    
   validar(user:string, pass:string){
     const params = `${this.apiUrl}/${user}/${pass}`;
-    return this.http.get(params);
-  
+    return this.http.get<any>(params);
+  }
+
+
+  apiUrlOrdenes: string = 'http://131.108.7.230:5088/apimoto/public/api/ordmotoasig';
+  OrdenesPendientes(id: string){
+    const paramsOrdenes = `${this.apiUrlOrdenes}/${id}`;
+    return this.http.get<any>(paramsOrdenes);
+
   }
 }

@@ -17,20 +17,14 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'ordenes',
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./ordenes/ordenes.module').then( m => m.OrdenesPageModule)
-
-      },
-      {
-        path: ':ordenesId',
-        loadChildren: () => import ('./ordenes/pages/datos-cliente/datos-cliente.module').then (m => m.DatosClientePageModule )
-      }
-
-    ]
+    path: 'ordenes/:ordenesId',
+    loadChildren: () => import('./ordenes/ordenes.module').then( m => m.OrdenesPageModule)
   },
+  {
+    path: 'ordenesDetalles/:ordenesId',
+    loadChildren: () => import('./ordenes/pages/detalle-orden/detalle-orden.module').then( m => m.DetalleOrdenPageModule)
+  },
+
 
 ];
 

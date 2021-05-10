@@ -7,11 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: OrdenesPage
+  },  {
+    path: 'detalle-orden',
+    loadChildren: () => import('./pages/detalle-orden/detalle-orden.module').then( m => m.DetalleOrdenPageModule)
   },
-  {
-    path: 'datos-cliente',
-    loadChildren: () => import('./pages/datos-cliente/datos-cliente.module').then( m => m.DatosClientePageModule)
-  }
+
+  
 ];
 
 @NgModule({

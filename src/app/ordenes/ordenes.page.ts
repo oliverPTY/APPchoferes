@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-ordenes',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdenesPage implements OnInit {
 
-  constructor() { }
+  constructor(private ValorRouter: ActivatedRoute, private serviceAPP: ServiceService) { }
 
-  ngOnInit() {
+  ordenes: number [] = [];
+  ngOnInit(): void {
+   
+   this.ValorRouter.params.pipe(
+    switchMap((params)=>
+       this.serviceAPP.OrdenesPendientes(params.ordenesId))
+   ).subscribe(paramss =>{
+     this.ordenes= paramss;
+   })
+
   }
 
 }
+
+
