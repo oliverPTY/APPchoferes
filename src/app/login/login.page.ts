@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServiceService } from './services/service.service';
+import { ServiceService } from '../service.service';
 
 
 @Component({

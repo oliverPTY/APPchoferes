@@ -1,45 +1,45 @@
-<ion-card *ngFor="let item of datos">
+<ion-card *ngFor="let item of datos" id="cardDetalles">
     <ion-item>
-        <ion-label>#orden: {{item.orden}} </ion-label>
+        <ion-label> <strong>Orden:</strong> {{item.orden}} </ion-label>
 
     </ion-item>
     <ion-item>
 
-        <ion-label>Nombre: {{ item.nombre}} {{ item.apellido}} </ion-label>
-
-    </ion-item>
-
-    <ion-item>
-
-        <ion-label>Telefonos: {{ item.telefono }} </ion-label>
+        <ion-label> <strong>Nombre:</strong>  {{ item.nombre}} {{ item.apellido}} </ion-label>
 
     </ion-item>
 
     <ion-item>
 
-        <ion-label>Metodo : {{item.metodo}} </ion-label>
+        <ion-label> <strong>Telefonos:</strong> {{ item.telefono }} </ion-label>
 
     </ion-item>
 
     <ion-item>
 
-        <ion-label>TipoT: {{ item.TipoT }} </ion-label>
-
-    </ion-item>
-    <ion-item>
-
-        <ion-label>Digitos: {{ item.Digitos}} </ion-label>
+        <ion-label> <strong>Metodo:</strong> {{item.metodo}} </ion-label>
 
     </ion-item>
 
     <ion-item>
 
-        <ion-label>Total: ${{item.TotalO}} </ion-label>
+        <ion-label> <strong>TipoT:</strong> {{ item.TipoT }} </ion-label>
 
     </ion-item>
     <ion-item>
 
-        <ion-label>Verificado: {{item.Verificado}} </ion-label>
+        <ion-label> <strong>Digitos:</strong> {{ item.Digitos}} </ion-label>
+
+    </ion-item>
+
+    <ion-item>
+
+        <ion-label> <strong>Total:</strong> ${{item.TotalO}} </ion-label>
+
+    </ion-item>
+    <ion-item>
+
+        <ion-label> <strong>Verificado:</strong> {{item.Verificado}} </ion-label>
 
     </ion-item>
 </ion-card>
