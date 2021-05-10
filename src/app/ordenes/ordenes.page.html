@@ -1,35 +1,20 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title> <center><ion-icon id="iconoCabecera" name="receipt-outline"></ion-icon> Ordenes</center> </ion-title>
+        <ion-title>
+
+            <ion-icon class="ico" id="iconoCabecera" name="receipt-outline"> </ion-icon>
+            Ordenes
+        </ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-        <ion-list>
-            <ion-list-header *ngIf="ordenes!='' ">
-              Ordenes Activas
-            </ion-list-header>
-                <ion-list-header *ngIf="ordenes=='' ">
-                    No hay Ordenes Disponibles
-                </ion-list-header>  
-            
-    
-            <ion-item *ngFor="let item of ordenes" [routerLink]="['/ordenesDetalles',item.idorden |  slice:3:12]">
-              <ion-avatar slot="start">
-                <img id="imgOrdenes" src="../../assets/icon/pedido.png">
-              </ion-avatar>
-              <ion-label>
-                <h2>Orden {{item.idorden |  slice:3:12}}</h2>
-                <h3>Nombre de la persona</h3>
-                <p>Direccion</p>
-              </ion-label>
-            </ion-item>
-        </ion-list>
+    <app-orden></app-orden>
 
 
-       
-          
-        
-    
+
+
+
+
 
 </ion-content>

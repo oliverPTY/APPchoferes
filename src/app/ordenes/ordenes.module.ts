@@ -11,12 +11,14 @@ import { OrdenComponent } from './component/orden/orden.component';
 
 
 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    OrdenesPageRoutingModule
+    OrdenesPageRoutingModule,
+
   ],
   declarations: [OrdenesPage,OrdenComponent]
 })

@@ -15,10 +15,5 @@ export class ServiceService {
   }
 
 
-  apiUrlOrdenes: string = 'http://131.108.7.230:5088/apimoto/public/api/ordmotoasig';
-  OrdenesPendientes(id: string){
-    const paramsOrdenes = `${this.apiUrlOrdenes}/${id}`;
-    return this.http.get<any>(paramsOrdenes);
 
-  }
 }

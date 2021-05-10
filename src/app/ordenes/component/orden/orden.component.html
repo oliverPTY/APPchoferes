@@ -1,12 +1,26 @@
 <ion-list>
 
-    <ion-item [routerLink]="['/ordenes',User.idorden]">
-        <ion-avatar slot="start">
+    <ion-list>
+        <ion-list-header *ngIf="ordenes.length >0">
+            Ordenes Activas
+        </ion-list-header>
+        <hr>
+        <ion-list-header *ngIf="hayError" class="alert alert-danger">
+            No hay Ordenes Disponibles
+        </ion-list-header>
 
-        </ion-avatar>
-        <ion-label>
-            {{ User.idorden}}
-        </ion-label>
 
-    </ion-item>
+
+        <ion-item *ngFor="let item of ordenes " [routerLink]="[ '/ordenesDetalles',item.idorden ] ">
+            <ion-avatar slot="start ">
+                <img id="imgOrdenes" src="../../assets/icon/pedido.png">
+                <!-- <img  " > -->
+            </ion-avatar>
+            <ion-label>
+                <h2>Orden: {{item.idorden }}</h2>
+                <h3>Nombre del Cliente: {{item.idorden}} </h3>
+                <p>Direccion: {{item.Direccion}} </p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
 </ion-list>
