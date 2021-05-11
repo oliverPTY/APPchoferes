@@ -12,6 +12,8 @@ import {  HttpClientModule } from '@angular/common/http';
 import { OrdenesPageModule } from './ordenes/ordenes.module';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,7 @@ import { OrdenesPageModule } from './ordenes/ordenes.module';
     AppRoutingModule,
     LoginPageModule,
     OrdenesPageModule,
-    HttpClientModule
+    HttpClientModule,
     
 
   ],

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,7 @@ export class ServiceService {
     const params = `${this.apiUrl}/${user}/${pass}`;
     return this.http.get<any>(params);
   }
+  
 
 
 
