@@ -11,6 +11,8 @@ import { LoginPageModule } from './login/login.module';
 import {  HttpClientModule } from '@angular/common/http';
 import { OrdenesPageModule } from './ordenes/ordenes.module';
 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 
 
 
@@ -28,6 +30,7 @@ import { OrdenesPageModule } from './ordenes/ordenes.module';
     LoginPageModule,
     OrdenesPageModule,
     HttpClientModule,
+    MDBBootstrapModule.forRoot()
     
 
   ],

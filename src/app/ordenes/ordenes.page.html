@@ -1,49 +1,52 @@
 <ion-header>
     <ion-toolbar color="primary">
         <ion-title>
-
-            <ion-icon class="ico" id="iconoCabecera" name="receipt-outline"> </ion-icon>
+            <ion-icon class="ico" id="iconoCabecera" name="reader-outline"></ion-icon>
             Ordenes
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-list>
         <ion-list-header *ngIf="ordenes!='' ">
-            Ordenes Activas
         </ion-list-header>
         <ion-list-header *ngIf="ordenes=='' ">
             No hay Ordenes Disponibles
         </ion-list-header>
 
-        <ion-card>
-            <ion-item *ngFor="let item of ordenes" [routerLink]="['/ordenesDetalles',item.idorden]">
-                <!---|  slice:3:12-->
+   
+            
+          
 
-                <form>
-                    <h2>
-                        <ion-icon name="ticket-outline" id="iconoCabecera"></ion-icon> Orden <strong> {{ item.idorden}}</strong></h2>
+                <!--Card-->
+    <mdb-card *ngFor="let item of ordenes" [routerLink]="['/ordenesDetalles',item.idorden]" cascade="true" id="cardOrdenesView">
 
-                    <br>
-                    <ion-label> <strong>Direccion:</strong> </ion-label>
-                    <ion-input>
-                        <h1></h1> {{item.Direccion}} </ion-input>
-                    <p></p>
-                </form>
+        <!--Card image-->
+        <div class="view view-cascade gradient-card-header blue-gradient text-center" id="CardOrden">
+          <h2 class="card-header-title"> <h2>
+            <ion-icon name="ticket-outline" id="iconoCabecera"></ion-icon> Orden <strong> {{ item.idorden}}</strong></h2></h2>
+        </div>
+        <!--/Card image-->
+  
+        <mdb-card-body cascade="true" class="text-center">
+          <!--Card content-->
+  
+          <mdb-card-text>
+            <strong>Direccion:</strong>
+     
+             {{item.Direccion}} 
+          </mdb-card-text>
+    
+        </mdb-card-body>
+
+  
+      </mdb-card>
+      <br><br>
+
+      
                 
 
-            </ion-item>
-
-
-            
-        </ion-card>
-    </ion-list>
-
-
-
-
-
+   
 
 
 </ion-content>
