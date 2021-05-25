@@ -4,6 +4,8 @@ import { switchMap } from 'rxjs/operators';
 import { OrdenService } from './services/orden.service';
 import { Ordenes } from './interfaces/orden.interface';
 
+import { MenuController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-ordenes',
@@ -15,10 +17,10 @@ export class OrdenesPage {
     hayError: boolean=false;
     ordenes: Ordenes [] = [];
   
-    constructor(private ValorRouter: ActivatedRoute, private serviceAPP: OrdenService ) { }
-  
-   
-    ngOnInit(): void {
+    constructor(private ValorRouter: ActivatedRoute, private serviceAPP: OrdenService 
+      ,private menu: MenuController) { }
+
+      ionViewWillEnter(): void {
      
      this.ValorRouter.params.pipe(
       switchMap((params)=>
@@ -26,10 +28,10 @@ export class OrdenesPage {
      ).subscribe(paramss =>{
        this.ordenes= paramss;
   
-     },(err)=>{
-  this.hayError=true
-  this.ordenes=[];
-     })
+        },(err)=>{
+      this.hayError=true
+      this.ordenes=[];
+        })
   
   
   

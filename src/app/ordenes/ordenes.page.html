@@ -1,5 +1,8 @@
 <ion-header>
     <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
         <ion-title>
             <ion-icon class="ico" id="iconoCabecera" name="reader-outline"></ion-icon>
             Ordenes
@@ -8,6 +11,7 @@
 </ion-header>
 
 <ion-content>
+
         <ion-list-header *ngIf="ordenes!='' ">
         </ion-list-header>
         <ion-list-header *ngIf="ordenes=='' ">
@@ -15,16 +19,13 @@
         </ion-list-header>
 
    
-            
-          
-
                 <!--Card-->
     <mdb-card *ngFor="let item of ordenes" [routerLink]="['/ordenesDetalles',item.idorden]" cascade="true" id="cardOrdenesView">
 
         <!--Card image-->
         <div class="view view-cascade gradient-card-header blue-gradient text-center" id="CardOrden">
           <h2 class="card-header-title"> <h2>
-            <ion-icon name="ticket-outline" id="iconoCabecera"></ion-icon> Orden <strong> {{ item.idorden}}</strong></h2></h2>
+            <ion-icon name="ticket-outline" id="iconoCabecera2"></ion-icon> Orden <strong> {{ item.idorden}}</strong></h2></h2>
         </div>
         <!--/Card image-->
   
@@ -41,12 +42,37 @@
 
   
       </mdb-card>
-      <br><br>
+      <br>
+      <mdb-card *ngFor="let item of ordenes" [routerLink]="['/ordenesDetalles',item.idorden]" cascade="true" id="cardOrdenesView">
 
+        <!--Card image-->
+        <div class="view view-cascade gradient-card-header blue-gradient text-center" id="CardOrden">
+          <h2 class="card-header-title"> <h2>
+            <ion-icon name="ticket-outline" id="iconoCabecera2"></ion-icon> Orden <strong> {{ item.idorden}}</strong></h2></h2>
+        </div>
+        <!--/Card image-->
+  
+        <mdb-card-body cascade="true" class="text-center">
+          <!--Card content-->
+  
+          <mdb-card-text>
+            <strong>Direccion:</strong>
+     
+             {{item.Direccion}} 
+          </mdb-card-text>
+    
+        </mdb-card-body>
+
+  
+      </mdb-card>
       
                 
 
    
-
+<script>
+    async function openMenu() {
+      await menuController.open();
+    }
+</script>
 
 </ion-content>
