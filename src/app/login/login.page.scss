@@ -1,38 +1,109 @@
+// #logologin {
+//     font-size: 26px;
+//     position: relative;
+//     top: 5px;
+// }
+// #logologinButton {
+//     font-size: 35px;
+//     position: relative;
+//     bottom: 1px;
+// }
+// #logoLoginImage {
+//     text-align: center;
+// }
+// #GridLogin {
+//     position: relative;
+//     top: 10%;
+//     text-align: center;
+// }
+// #logo {
+//     width: 270px;
+// }
+// #cardLogins {
+//     width: 80%;
+// }
+// #logoAlert {
+//     font-size: 30px;
+//     margin-right: 10px;
+//     position: relative;
+//     bottom: 2px;
+// }
+// .grid1 {
+//     height: 100%;
+//     padding: 0px;
+// }
+.contaier-login {
+    width: 90%;
+    padding: 10px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+}
 
-  
-  #logologin{
-    font-size: 26px;
-    position: relative;
-    top: 5px;
-  }
-  
-  #logologinButton{
-    font-size: 35px;
-    position: relative;
-    bottom: 1px;
-  }
-  
-  #logoLoginImage{
-    text-align: center;
-  }
-  
-  #GridLogin{
-    position: relative;
-    top: 10%;
-    text-align: center;
-  }
-  
-  #logo{
-    width: 270px;
-  }
-  #cardLogins{
-    width: 80%;
-  }
+// .row1 {
+//     height: 50%;
+//     background: -moz-linear-gradient(45deg, rgba(61, 66, 150, 1) 0%, rgba(84, 74, 171, 0.8) 100%);
+//     background: -webkit-linear-gradient(45deg, rgba(61, 66, 150, 1) 0%, rgba(84, 74, 171, 0.8) 100%);
+//     background: linear-gradient(45deg, rgba(61, 66, 150, 1) 0%, rgba(84, 74, 171, 0.8) 100%);
+// }
+// .row2 {
+//     height: 50%;
+// }
+// ion-icon {
+//     margin-right: 15px;
+// }
+// ion-button {
+//     margin-top: 5px;
+//     margin-bottom: 15px;
+// }
+ion-slide {
+    width: 100%;
+    height: 100%;
+    top: 0px !important;
+    margin-top: -55%;
+}
 
-  #logoAlert{
-    font-size: 30px;
-    margin-right: 10px;
-    position: relative;
-    bottom: 2px;
-  }
-  
+ion-header {
+    position: absolute;
+}
+
+ion-toolbar {
+    --ion-background-color: trasparent;
+    --opacity: 0;
+}
+
+ion-content {
+    --ion-background-color: #E1EAF9;
+}
+
+.wrapform {
+    margin-bottom: 10%;
+}
+
+ion-item {
+    ion-input {
+        color: #647890;
+    }
+}
+
+.sing-btn-wrap {
+    text-align: center;
+    padding-top: 20px;
+}
+
+ion-card {
+    --ion-background-color: trasparent;
+    box-shadow: none !important;
+}
+
+.logo {
+    width: 70%;
+    margin-left: 12% !important;
+    margin-top: 20px;
+}
+
+ion-card-content {
+    margin-bottom: 10%;
+}

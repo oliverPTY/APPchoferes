@@ -1,16 +1,7 @@
-<ion-content [fullscreen]="true">
+<!-- <ion-content [fullscreen]="true">
 
-    <div *ngIf="alert_noEntrar" class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
-        <ion-icon id="logoAlert" name="alert-circle-outline"></ion-icon> Ingrese un Usuario o Contraseñas Correctos
-        <button type="button" (click)="error()" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+  
 
-
-    <ion-header collapse="condense">
-        <ion-toolbar>
-            <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-    </ion-header>
 
     <ion-grid id="GridLogin">
         <ion-row>
@@ -30,11 +21,122 @@
                     </ion-item>
                     <ion-button type="submit" class="mt-5" expand="block">
                         <ion-icon id="logologinButton" name="log-in-outline" [routerLink]="['/ordenes']"></ion-icon> Iniciar Sesión</ion-button>
-                    <!-- [routerLink]="['/inicio']"-->
+                
                 </form>
             </ion-col>
 
         </ion-row>
     </ion-grid>
 
+</ion-content> -->
+
+<!-- <ion-content>
+
+    <ion-grid class="grid1">
+
+        <ion-row class="row1">
+            <ion-col>
+
+            </ion-col>
+        </ion-row>
+
+
+        <ion-row class="row2">
+            <ion-col>
+
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+    <ion-slide>
+        <div class="contaier-login">
+            <ion-grid>
+                <ion-row>
+                    <div *ngIf="alert_noEntrar" class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
+                        <ion-icon id="logoAlert" name="alert-circle-outline"></ion-icon> Ingrese un Usuario o Contraseñas Correctos
+                        <button type="button" (click)="error()" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <ion-col>
+                        <h1>Iniciar Sesión</h1>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <form (ngSubmit)="ingresar()" autocomplete="off" class="mt-5">
+                            <ion-list>
+
+                                <ion-item>
+
+                                    <ion-label position="floating">
+                                        <ion-icon name="person" class="icon-login"></ion-icon>Usuario</ion-label>
+                                    <ion-input [(ngModel)]="user" name="user"></ion-input>
+                                </ion-item>
+                                <br />
+                                <ion-item>
+                                    <ion-label position="floating">
+                                        <ion-icon name="key-outline" class="icon-login"></ion-icon>Contraseña</ion-label>
+                                    <ion-input type="password" [(ngModel)]="pass" name="pass"></ion-input>
+                                </ion-item>
+
+                            </ion-list>
+                            <ion-col>
+                                <ion-button type="submit" fill="solid" expand="full" [routerLink]="['/ordenes']">
+                                    Entrar
+                                </ion-button>
+                            </ion-col>
+                        </form>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </ion-slide> -->
+
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <!-- <ion-title>Login</ion-title> -->
+    </ion-toolbar>.
+    <ion-button slot="start"></ion-button>
+</ion-header>
+
+
+<ion-content>
+    <ion-card class="ion-no-margin">
+
+        <ion-img class="prueba" src="../../assets/icon/header1.png"></ion-img>
+        <ion-slide>
+            <div class="contaier-login">
+                <ion-img class="logo" src="../../assets/icon/logowebx1.png" alt=""></ion-img>
+
+
+                <ion-card-content>
+
+
+
+                    <form (ngSubmit)="ingresar()" autocomplete="off" class="mt-5">
+                        <div class="wrapform">
+
+                            <ion-item>
+                                <ion-label position="floating">
+                                    <ion-icon name="person" class="icon-login"></ion-icon>Usuario</ion-label>
+                                <ion-input [(ngModel)]="user" name="user"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label position="floating">
+                                    <ion-icon name="key-outline" class="icon-login"></ion-icon>Contraseña</ion-label>
+                                <ion-input type="password" [(ngModel)]="pass" name="pass"></ion-input>
+                            </ion-item>
+                        </div>
+                        <div class="sing-btn-wrap">
+                            <ion-button type="submit" shape="round" fill="solid" expand="full" [routerLink]="['/ordenes']">
+                                Entrar
+                            </ion-button>
+                        </div>
+                    </form>
+
+                </ion-card-content>
+            </div>
+        </ion-slide>
+    </ion-card>
 </ion-content>
