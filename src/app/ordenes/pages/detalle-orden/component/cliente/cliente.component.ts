@@ -5,6 +5,8 @@ import { ClienteService } from '../../../../services/cliente.service';
 import { switchMap } from 'rxjs/operators';
 import { OrdenService } from '../../../../services/orden.service';
 import { Ordenes } from '../../../../interfaces/orden.interface';
+import { VerificaClienteService } from '../../../../services/verifica-cliente.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-cliente',
@@ -15,7 +17,7 @@ export class ClienteComponent implements OnInit {
 hayError: Boolean=false;
 datos: Cliente []=[];
 Ordenes: Ordenes [] = [];
-  constructor(private clienterouter:ActivatedRoute , private clienteserv:ClienteService, private ordenes:OrdenService) { }
+  constructor(private clienterouter:ActivatedRoute , private clienteserv:ClienteService, private ordenes:OrdenService, private Verifivador:VerificaClienteService) { }
 
   ngOnInit(): void {
 
@@ -30,5 +32,22 @@ Ordenes: Ordenes [] = [];
     })
     
   }
+  
+  
+id:string='000000044'
 
-}
+  data(prueba){
+    console.log(prueba)
+   
+      this.Verifivador.validar(this.id)
+    .subscribe(paramsss=>{
+      this.datos=paramsss;
+    },(err)=>{
+      this.hayError=true
+      this.datos=[];
+    })
+    }
+     
+  }
+
+

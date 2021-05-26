@@ -13,6 +13,14 @@ export class ClienteService {
   datosClienete(id: string): Observable <Cliente[]>{
     const paramsCliente = `${this.apiUrlDatos}/${id}`;
     return this.http.get<Cliente[]>(paramsCliente);
+  }
+
+
+
+
 
   }
-}
+
+
+
+
