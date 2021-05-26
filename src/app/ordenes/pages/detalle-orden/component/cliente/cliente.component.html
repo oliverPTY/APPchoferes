@@ -1,45 +1,34 @@
-<ion-card *ngFor="let item of datos" id="cardDetalles">
-    <ion-item>
-        <ion-label> <strong>Orden:</strong> {{item.orden}} </ion-label>
 
-    </ion-item>
-    <ion-item>
 
-        <ion-label> <strong>Nombre:</strong> {{ item.nombre}} {{ item.apellido}} </ion-label>
-
-    </ion-item>
-
-    <ion-item>
-
-        <ion-label> <strong>Telefonos:</strong> {{ item.telefono }} </ion-label>
-
-    </ion-item>
-
-    <ion-item>
-
-        <ion-label> <strong>Metodo:</strong> {{item.metodo}} </ion-label>
-
-    </ion-item>
-
-    <ion-item>
-
-        <ion-label> <strong>TipoT:</strong> {{ item.TipoT }} </ion-label>
-
-    </ion-item>
-    <ion-item>
-
-        <ion-label> <strong>Digitos:</strong> {{ item.Digitos}} </ion-label>
-
-    </ion-item>
-
-    <ion-item>
-
-        <ion-label> <strong>Total:</strong> ${{item.TotalO}} </ion-label>
-
-    </ion-item>
-    <ion-item>
-
-        <ion-label> <strong>Verificado:</strong> {{item.Verificado}} </ion-label>
-
-    </ion-item>
-</ion-card>
+<ul class="list-group"  *ngFor="let item of datos">
+    <li class="list-group-item ">
+      <div class="md-v-line"></div><ion-icon id="IconDetalle" name="barcode-outline" class="mr-5"></ion-icon><strong>Orden:</strong> {{item.orden}}
+    </li>
+    <li class="list-group-item ">
+      <div class="md-v-line"></div><ion-icon id="IconDetalle" name="person-circle-outline" class="mr-5"></ion-icon><strong>Nombre:</strong> {{ item.nombre}} {{ item.apellido}}
+    </li>
+    <li class="list-group-item ">
+      <div class="md-v-line"></div><ion-icon id="IconDetalle" name="call-outline" class="mr-5"></ion-icon><strong>Telefonos:</strong> {{ item.telefono }}
+    </li>
+    <li class="list-group-item ">
+      <div class="md-v-line"></div><ion-icon id="IconDetalle" name="card-outline" class="mr-5"></ion-icon><strong>Metodo:</strong> {{item.metodo}}
+    </li>
+    <li class="list-group-item ">
+      <div class="md-v-line"></div><ion-icon id="IconDetalle" name="pricetags-outline" class="mr-5"></ion-icon><strong>TipoT:</strong> {{ item.TipoT }}
+    </li>
+    <li class="list-group-item ">
+        <div class="md-v-line"></div><ion-icon id="IconDetalle" name="keypad-outline" class="mr-5"></ion-icon><strong>Digitos:</strong> {{ item.Digitos}}
+      </li>
+      <li class="list-group-item ">
+        <div class="md-v-line"></div><ion-icon  id="IconDetalle" name="cash-outline" class="mr-5"></ion-icon><strong>Total:</strong> ${{item.TotalO}}
+      </li>
+      <li class="list-group-item" *ngIf="item.Verificado == 0; else verificadoSi">
+        <div class="md-v-line"></div><ion-icon id="IconDetalle" name="checkmark-done-outline" class="mr-5"></ion-icon><strong>Verificado:</strong> No Verificado
+      </li>
+        <ng-template #verificadoSi>
+            <li class="list-group-item">
+            <div class="md-v-line"></div><ion-icon id="IconDetalle" name="checkmark-done-outline" class="mr-5"></ion-icon><strong>Verificado:</strong> Verificado
+            </li> 
+        </ng-template>  
+      
+  </ul>
