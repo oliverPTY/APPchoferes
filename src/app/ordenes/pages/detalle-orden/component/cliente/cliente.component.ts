@@ -13,13 +13,30 @@ import { ThrowStmt } from '@angular/compiler';
   templateUrl: './cliente.component.html',
   styleUrls: [],
 })
-export class ClienteComponent implements OnInit {
+export class ClienteComponent implements OnInit{
 hayError: Boolean=false;
 datos: Cliente []=[];
 Ordenes: Ordenes [] = [];
   constructor(private clienterouter:ActivatedRoute , private clienteserv:ClienteService, private ordenes:OrdenService, private Verifivador:VerificaClienteService) { }
+  
+ 
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+    this.clienterouter.params.pipe(
+      switchMap((params)=>
+      this.clienteserv.datosClienete(params.ordenesId))
+    ).subscribe(paramss=>{
+      this.datos=paramss;
+    },(err)=>{
+      this.hayError=true
+      this.datos=[];
+    })
+  
+  }
+
+  
+  ionViewWillEnter() {
 
     this.clienterouter.params.pipe(
       switchMap((params)=>
@@ -33,7 +50,7 @@ Ordenes: Ordenes [] = [];
     
   }
   
-  
+ 
 id:string='000000044'
 
   data(prueba){
@@ -47,6 +64,7 @@ id:string='000000044'
       this.datos=[];
     })
     }
+    
      
   }
 

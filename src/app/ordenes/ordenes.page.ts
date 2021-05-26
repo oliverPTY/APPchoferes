@@ -20,7 +20,7 @@ export class OrdenesPage {
     constructor(private ValorRouter: ActivatedRoute, private serviceAPP: OrdenService 
       ,private menu: MenuController) { }
 
-      ionViewWillEnter(): void {
+      ngOnInit(): void {
      
      this.ValorRouter.params.pipe(
       switchMap((params)=>
@@ -31,11 +31,24 @@ export class OrdenesPage {
         },(err)=>{
       this.hayError=true
       this.ordenes=[];
-        })
-  
-  
-  
+        })  
     }
+
+    ionViewWillEnter(): void {
+     
+      this.ValorRouter.params.pipe(
+       switchMap((params)=>
+          this.serviceAPP.OrdenesPendientes(params.ordenesId))
+      ).subscribe(paramss =>{
+        this.ordenes= paramss;
+   
+         },(err)=>{
+       this.hayError=true
+       this.ordenes=[];
+         })
+
+    
+     }
   
   
 }
