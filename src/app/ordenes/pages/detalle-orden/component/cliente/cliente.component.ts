@@ -8,6 +8,8 @@ import { Ordenes } from '../../../../interfaces/orden.interface';
 import { VerificaClienteService } from '../../../../services/verifica-cliente.service';
 import { ThrowStmt } from '@angular/compiler';
 
+import {AlertController} from '@ionic/angular';
+
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
@@ -17,7 +19,7 @@ export class ClienteComponent implements OnInit{
 hayError: Boolean=false;
 datos: Cliente []=[];
 Ordenes: Ordenes [] = [];
-  constructor(private clienterouter:ActivatedRoute , private clienteserv:ClienteService, private ordenes:OrdenService, private Verifivador:VerificaClienteService) { }
+  constructor(private clienterouter:ActivatedRoute , private clienteserv:ClienteService, private ordenes:OrdenService, private Verifivador:VerificaClienteService,public alertController: AlertController) { }
   
  
 
@@ -48,6 +50,32 @@ Ordenes: Ordenes [] = [];
       this.datos=[];
     })
     
+  }
+
+
+
+  async entregad(){
+
+    const ElementodeAlerta = await this.alertController.create({
+      header: 'El Pedido fue Entregado?',
+      message: 'Esta por dar por entragado el pedido',
+      buttons: [{
+        text: 'Cancel',
+        role: 'cancel'
+      },
+      {
+        text: 'Entregado',
+        handler: () =>{
+
+         console.log('entregado');
+         
+          
+        }
+      }
+    ]
+    });
+
+    await ElementodeAlerta.present();
   }
   
  

@@ -10,9 +10,19 @@ export class ClienteService {
 
   apiUrlDatos: string = 'http://131.108.7.230:5088/apimoto/public/api/detalleorden';
   constructor(private http:HttpClient) { }
+
   datosClienete(id: string): Observable <Cliente[]>{
     const paramsCliente = `${this.apiUrlDatos}/${id}`;
     return this.http.get<Cliente[]>(paramsCliente);
+  }
+
+  Entregado(){
+
+  }
+
+
+  cancelado(){
+    
   }
 
 
