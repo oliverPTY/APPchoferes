@@ -91,9 +91,21 @@ Ordenes: Ordenes [] = [];
             this.clienterouter.params.subscribe(params =>{
               console.log(params.ordenesId);
               this.clienteserv.Entregado(params.ordenesId,this.valor)
-              .subscribe(response =>{
+              .subscribe( async response =>{
                 console.log('se Entrego El pedido');
-                this.navCtrl.back();
+
+                const alert = await this.alertController.create({
+                  cssClass: 'my-custom-class',
+                  header: 'Orden Entregada con Exito',
+                  subHeader: '',
+                  message: 'Preciona "OK" para continuar',
+                  buttons: [{
+                   text:'OK',
+                   handler:() =>{
+                    this.navCtrl.back();
+                   }
+                  }]
+                });
               })
 
             })
@@ -126,10 +138,10 @@ Ordenes: Ordenes [] = [];
           this.clienterouter.params.subscribe(params =>{
             this.clienteserv.cancelado(params.ordenesId)
             .subscribe( async response =>{
-              
+
               const alert = await this.alertController.create({
                 cssClass: 'my-custom-class',
-                header: 'Orden Cancelada',
+                header: 'Orden Cancelada con Exito',
                 subHeader: '',
                 message: 'Preciona "OK" para continuar',
                 buttons: [{
