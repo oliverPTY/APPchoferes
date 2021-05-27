@@ -58,28 +58,42 @@ Ordenes: Ordenes [] = [];
 
   async entregad(){
 
-    const ElementodeAlerta = await this.alertController.create({
-      header: 'El Pedido fue Entregado?',
-      message: 'Esta por dar por entragado el pedido',
-      buttons: [{
-        text: 'Cancel',
-        role: 'cancel'
-      },
-      {
-        text: 'Entregado',
-        handler: () =>{
 
-         console.log('entregado');
-         console.log(this.valor);
-         
-         
-          
+    if(this.valor == ''){
+
+      const alert = await this.alertController.create({
+        cssClass: 'my-custom-class',
+        header: 'Error al Entregar Pedido',
+        subHeader: '',
+        message: 'Seleccione un metodo de pago.',
+        buttons: ['OK']
+      });
+  
+      await alert.present();
+    }else{
+
+      const ElementodeAlerta = await this.alertController.create({
+        header: 'El Pedido fue Entregado?',
+        message: 'Esta por dar por entragado el pedido',
+        buttons: [{
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Entregado',
+          handler: () =>{
+  
+           console.log('entregado');
+           console.log(this.valor);
+           
+          }
         }
-      }
-    ]
-    });
+      ]
+      });
+  
+      await ElementodeAlerta.present();
 
-    await ElementodeAlerta.present();
+    }
   }
   
  
