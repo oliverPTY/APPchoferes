@@ -8,6 +8,7 @@ import { Cliente } from '../interfaces/cliente';
 })
 export class ClienteService {
 
+  //DETALLE DE LA ORDEN
   apiUrlDatos: string = 'http://131.108.7.230:5088/apimoto/public/api/detalleorden';
   constructor(private http:HttpClient) { }
 
@@ -16,11 +17,16 @@ export class ClienteService {
     return this.http.get<Cliente[]>(paramsCliente);
   }
 
+
+   //ENTREGADO
+apiEtregadoURL: string = 'http://131.108.7.230:5088/apimoto/public/api/ordenupdate';
   Entregado(){
 
   }
 
 
+  //CANCELADO
+  apiCanceladoURL: string = 'http://131.108.7.230:5088/apimoto/public/api/verificarcliente';
   cancelado(){
     
   }

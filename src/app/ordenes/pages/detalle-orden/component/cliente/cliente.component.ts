@@ -82,6 +82,12 @@ Ordenes: Ordenes [] = [];
         {
           text: 'Entregado',
           handler: () =>{
+          
+            this.clienterouter.params.subscribe(params =>{
+              console.log(params.ordenesId);
+              
+            })
+           
   
            console.log('entregado');
            console.log(this.valor);
