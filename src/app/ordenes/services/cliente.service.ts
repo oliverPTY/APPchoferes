@@ -19,23 +19,46 @@ export class ClienteService {
 
 
    //ENTREGADO
-apiEtregadoURL: string = 'http://131.108.7.230:5088/apimoto/public/api/ordenupdate';
-  Entregado(){
-
+  apiEtregadoURL: string = 'http://131.108.7.230:5088/apimoto/public/api/ordenupdate';
+  
+  Entregado(idOrden: string , metodo: string): Observable <any>{
+  const paramsEntregado = `${this.apiEtregadoURL}/${idOrden}/4/${metodo}`;
+  const obj = {
+    Headers:{
+      'Content-Type': 'application/x-ww-form-urlencoded'
+    }
   }
+  return this.http.put<any>(paramsEntregado,obj);
+  }
+  
 
 
   //CANCELADO
-  apiCanceladoURL: string = 'http://131.108.7.230:5088/apimoto/public/api/verificarcliente';
-  cancelado(){
+  apiCanceladoURL: string = 'http://131.108.7.230:5088/apimoto/public/api/ordenupdate';
+  ninguno: string = 'Ninguna';  
+  cancelado(idorden: string){
+
+    const paramsEntregado = `${this.apiEtregadoURL}/${idorden}/5/${this.ninguno}`;
+  const obj = {
+    Headers:{
+      'Content-Type': 'application/x-ww-form-urlencoded'
+    }
+  }
+  return this.http.put<any>(paramsEntregado,obj);
+  }
     
-  }
+  
+
+
+
+
+}
 
 
 
 
 
-  }
+  
 
 
 

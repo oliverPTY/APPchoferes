@@ -13,6 +13,15 @@
 
 <ion-content>
 
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="chevron-down-circle-outline"
+          pullingText="Pull to refresh"
+          refreshingSpinner="lines"
+          refreshingText="Cargando...">
+        </ion-refresher-content>
+      </ion-refresher>
+
         <ion-list-header *ngIf="ordenes!='' ">
         </ion-list-header>
         <ion-list-header *ngIf="ordenes=='' ">

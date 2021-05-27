@@ -14,9 +14,31 @@ import { MenuController } from '@ionic/angular';
 })
 export class OrdenesPage {
 
-    hayError: boolean=false;
-    ordenes: Ordenes [] = [];
+
   
+  hayError: boolean=false;
+  ordenes: Ordenes [] = [];
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      this.ValorRouter.params.pipe(
+        switchMap((params)=>
+           this.serviceAPP.OrdenesPendientes(params.ordenesId))
+       ).subscribe(paramss =>{
+         this.ordenes= paramss;
+    
+          },(err)=>{
+        this.hayError=true
+        this.ordenes=[];
+          }) 
+      event.target.complete();
+    }, 2000);
+  }
+
+
     constructor(private ValorRouter: ActivatedRoute, private serviceAPP: OrdenService 
       ,private menu: MenuController) { }
 

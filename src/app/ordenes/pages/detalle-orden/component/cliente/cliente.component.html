@@ -1,3 +1,4 @@
+
 <ul class="list-group" *ngFor="let item of datos">
     <li class="list-group-item ">
         <div class="md-v-line"></div>
@@ -68,6 +69,6 @@
   </section>
   <br>
   <section id="BotonesPosition">
-    <ion-button  id="sizeBoton" color="danger"><ion-icon id="iconDetalleAccion" name="close-circle-outline"></ion-icon> CANCELADO</ion-button>
+    <ion-button (click)="cancelado()" id="sizeBoton" color="danger"><ion-icon id="iconDetalleAccion" name="close-circle-outline"></ion-icon> CANCELADO</ion-button>
   </section>
   <br>

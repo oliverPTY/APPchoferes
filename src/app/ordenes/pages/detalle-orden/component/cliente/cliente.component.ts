@@ -8,7 +8,7 @@ import { Ordenes } from '../../../../interfaces/orden.interface';
 import { VerificaClienteService } from '../../../../services/verifica-cliente.service';
 import { ThrowStmt } from '@angular/compiler';
 
-import {AlertController} from '@ionic/angular';
+import {AlertController, NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-cliente',
@@ -16,10 +16,14 @@ import {AlertController} from '@ionic/angular';
   styleUrls: [],
 })
 export class ClienteComponent implements OnInit{
+
+
+
 hayError: Boolean=false;
 datos: Cliente []=[];
 Ordenes: Ordenes [] = [];
-  constructor(private clienterouter:ActivatedRoute , private clienteserv:ClienteService, private ordenes:OrdenService, private Verifivador:VerificaClienteService,public alertController: AlertController) { }
+  constructor(private clienterouter:ActivatedRoute , private clienteserv:ClienteService, private ordenes:OrdenService, private Verifivador:VerificaClienteService,public alertController: AlertController
+    ,private navCtrl: NavController) { }
   
  
 
@@ -55,6 +59,7 @@ Ordenes: Ordenes [] = [];
 
 
   valor: string= '';
+  confirmacion: boolean;
 
   async entregad(){
 
@@ -85,12 +90,13 @@ Ordenes: Ordenes [] = [];
           
             this.clienterouter.params.subscribe(params =>{
               console.log(params.ordenesId);
-              
+              this.clienteserv.Entregado(params.ordenesId,this.valor)
+              .subscribe(response =>{
+                console.log('se Entrego El pedido');
+                this.navCtrl.back();
+              })
+
             })
-           
-  
-           console.log('entregado');
-           console.log(this.valor);
            
           }
         }
@@ -99,9 +105,68 @@ Ordenes: Ordenes [] = [];
   
       await ElementodeAlerta.present();
 
-    }
+    } 
   }
   
+
+
+
+ async cancelado(){
+
+    const ElementodeAlerta = await this.alertController.create({
+      header: 'Desea Cancelar el Pedido?',
+      message: 'Presione "Ok" Para Cancelar el Pedido',
+      buttons: [{
+        text: 'Cancelar',
+        role: 'cancel',
+      },
+      {
+        text: 'Comfirmar',
+        handler: () =>{
+          this.clienterouter.params.subscribe(params =>{
+            this.clienteserv.cancelado(params.ordenesId)
+            .subscribe( async response =>{
+              
+              const alert = await this.alertController.create({
+                cssClass: 'my-custom-class',
+                header: 'Orden Cancelada',
+                subHeader: '',
+                message: 'Preciona "OK" para continuar',
+                buttons: [{
+                 text:'OK',
+                 handler:() =>{
+                  this.navCtrl.back();
+                 }
+                }]
+              });
+          
+              await alert.present(); 
+              
+
+             
+            })
+
+          })
+          
+         
+        }
+      }
+    ]
+    });
+
+    await ElementodeAlerta.present();
+
+  }
+
+
+
+
+
+
+
+
+
+
  
 id:string='000000044'
 
