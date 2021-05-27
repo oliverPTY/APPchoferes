@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
   ingresar(){
     if(this.user==='' || this.pass===''){
       this.alert_noEntrar = true;
-      console.log('NO');
+
       
     }else{
       this.serviceUser.validar(this.user,this.pass).subscribe((login)=>{

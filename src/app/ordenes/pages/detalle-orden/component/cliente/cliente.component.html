@@ -16,7 +16,7 @@
         <ion-icon id="IconDetalle" name="card-outline" class="mr-5"></ion-icon><strong>Metodo:</strong>
         <div id="SelectMetodo">
         <ion-item>
-            <ion-select>
+            <ion-select [(ngModel)]="valor" (change)="entregad()">
               <ion-select-option value="Tarjeta de Credito">Tarjeta de Credito</ion-select-option>
               <ion-select-option value="Online">Online</ion-select-option>
               <ion-select-option value="Clave">Clave</ion-select-option>

@@ -54,6 +54,8 @@ Ordenes: Ordenes [] = [];
 
 
 
+  valor: string= '';
+
   async entregad(){
 
     const ElementodeAlerta = await this.alertController.create({
@@ -68,6 +70,8 @@ Ordenes: Ordenes [] = [];
         handler: () =>{
 
          console.log('entregado');
+         console.log(this.valor);
+         
          
           
         }
