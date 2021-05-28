@@ -1,4 +1,3 @@
-
 <ul class="list-group" *ngFor="let item of datos">
     <li class="list-group-item ">
         <div class="md-v-line"></div>
@@ -16,19 +15,19 @@
         <div class="md-v-line"></div>
         <ion-icon id="IconDetalle" name="card-outline" class="mr-5"></ion-icon><strong>Metodo:</strong>
         <div id="SelectMetodo">
-        <ion-item>
-            <ion-select [(ngModel)]="valor" (change)="entregad()">
-              <ion-select-option value="Tarjeta de Credito">Tarjeta de Credito</ion-select-option>
-              <ion-select-option value="Online">Online</ion-select-option>
-              <ion-select-option value="Clave">Clave</ion-select-option>
-              <ion-select-option value="Efectivo">Efectivo</ion-select-option>
-              <ion-select-option value="ACH">ACH</ion-select-option>
-              <ion-select-option value="Cheque">Cheque</ion-select-option>
-              <ion-select-option value="Vale Panama">Vale Panama</ion-select-option>
-              <ion-select-option value="Vale BG">Vale BG</ion-select-option>
-              <ion-select-option value="Credito Riba">Credito Riba</ion-select-option>
-            </ion-select>
-          </ion-item>          
+            <ion-item>
+                <ion-select [(ngModel)]="valor" (change)="entregad()">
+                    <ion-select-option value="Tarjeta de Credito">Tarjeta de Credito</ion-select-option>
+                    <ion-select-option value="Online">Online</ion-select-option>
+                    <ion-select-option value="Clave">Clave</ion-select-option>
+                    <ion-select-option value="Efectivo">Efectivo</ion-select-option>
+                    <ion-select-option value="ACH">ACH</ion-select-option>
+                    <ion-select-option value="Cheque">Cheque</ion-select-option>
+                    <ion-select-option value="Vale Panama">Vale Panama</ion-select-option>
+                    <ion-select-option value="Vale BG">Vale BG</ion-select-option>
+                    <ion-select-option value="Credito Riba">Credito Riba</ion-select-option>
+                </ion-select>
+            </ion-item>
         </div>
     </li>
     <li class="list-group-item ">
@@ -52,23 +51,39 @@
             <div class="md-v-line"></div>
             <ion-icon id="IconDetalle" name="checkmark-done-outline" class="mr-5"></ion-icon><strong>Verificado:</strong> Verificado
         </li>
-    </ng-template>   
+    </ng-template>
+    <section id="BotonesPosition">
+        <li class="list-group-item" *ngIf="item.Verificado == 0; else yaVerificado">
+            <ion-button type="submit" color="secondary" fill="solid" expand="full" (click)="data()">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                Verificar Cliente
+            </ion-button>
+        </li>
+        <ng-template #yaVerificado>
+            <li class="list-group-item">
+                <ion-button type="submit" color="secondary" fill="solid" expand="full" (click)="data()" hidden>
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    Verificar Cliente
+                </ion-button>
+            </li>
+        </ng-template>
+    </section>
+
 </ul>
 <br>
-<section id="BotonesPosition">
-    <ion-button id="sizeBoton" color="secondary" (click)="data(item.orden)">
-        <ion-icon  id="iconDetalleAccion" name="information-circle-outline"></ion-icon>
-        Verificar Cliente
-    </ion-button>
-  </section>
+
+
+
+
 <br>
-<section id="BotonesPosition" >
-    <ion-button id="sizeBoton"  color="success" (click)="entregad()">
+<section id="BotonesPosition">
+    <ion-button id="sizeBoton" color="success" (click)="entregad()">
         <ion-icon id="iconDetalleAccion" name="checkmark-circle-outline"></ion-icon> ENTREGADO
     </ion-button>
-  </section>
-  <br>
-  <section id="BotonesPosition">
-    <ion-button (click)="cancelado()" id="sizeBoton" color="danger"><ion-icon id="iconDetalleAccion" name="close-circle-outline"></ion-icon> CANCELADO</ion-button>
-  </section>
-  <br>
+</section>
+<br>
+<section id="BotonesPosition">
+    <ion-button (click)="cancelado()" id="sizeBoton" color="danger">
+        <ion-icon id="iconDetalleAccion" name="close-circle-outline"></ion-icon> CANCELADO</ion-button>
+</section>
+<br>

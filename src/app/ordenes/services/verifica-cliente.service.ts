@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Cliente } from '../interfaces/cliente';
 
 
 @Injectable({
@@ -7,15 +8,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VerificaClienteService {
 
-private keys:string='1R1b4s1m1th'
-private apiUrl: string = ' http://131.108.7.230:5088/apimoto/public/api/verificarcliente';
-constructor(private http:HttpClient) { }
  
-validar(id:string){
-  const verificar = `${this.apiUrl}/${id}/${this.keys}`;
-  return this.http.get<any>(verificar);
+  urlVerifiar: string = 'http://131.108.7.230:5088/apimoto/public/api/verificarcliente';
+
+  constructor(private http:HttpClient) { }
+  
+  dar:string='1R1b4s1m1th'
+  VerificacionCliente(id: Cliente,dar:string='1R1b4s1m1th'){
+    const options = {
+      headers: {
+       'Content-Type': 'application/x-www-form-urlencoded'
+     }
+    }
+    const verificarCli= `${this.urlVerifiar}/${id}/${this.dar}`;
+    return this.http.put(verificarCli,options)  
+
+
 }
-
-
 }
 

@@ -6,7 +6,6 @@ import { switchMap } from 'rxjs/operators';
 import { OrdenService } from '../../../../services/orden.service';
 import { Ordenes } from '../../../../interfaces/orden.interface';
 import { VerificaClienteService } from '../../../../services/verifica-cliente.service';
-import { ThrowStmt } from '@angular/compiler';
 
 import {AlertController, NavController} from '@ionic/angular';
 
@@ -22,7 +21,7 @@ export class ClienteComponent implements OnInit{
 hayError: Boolean=false;
 datos: Cliente []=[];
 Ordenes: Ordenes [] = [];
-  constructor(private clienterouter:ActivatedRoute , private clienteserv:ClienteService, private ordenes:OrdenService, private Verifivador:VerificaClienteService,public alertController: AlertController
+  constructor(public alertCtrl: AlertController,private clienterouter:ActivatedRoute , private clienteserv:ClienteService, private ordenes:OrdenService, private Verifivador:VerificaClienteService,public alertController: AlertController
     ,private navCtrl: NavController) { }
   
  
@@ -180,19 +179,38 @@ Ordenes: Ordenes [] = [];
 
 
  
-id:string='000000044'
+  async data(){
 
-  data(prueba){
-    console.log(prueba)
-   
-      this.Verifivador.validar(this.id)
-    .subscribe(paramsss=>{
-      this.datos=paramsss;
-    },(err)=>{
+
+    this.clienterouter.params.pipe(
+        switchMap((params)=>
+        this.Verifivador.VerificacionCliente(params.ordenesId))
+      ).subscribe(paramss=>{
+    
+      },(err)=>{
       this.hayError=true
-      this.datos=[];
-    })
-    }
+        this.Ordenes=[];
+      })
+      
+    
+       const alert = await this.alertCtrl.create({
+         cssClass: 'my-custom-class',
+         header: 'ADVERTENCIA',
+         subHeader: 'USUARIO VERIFICADO CON EXITO',
+         buttons: ['OK']
+       });
+   
+       await alert.present();
+  
+     }
+ 
+     
+     
+ 
+ 
+ 
+   
+ 
     
      
   }
