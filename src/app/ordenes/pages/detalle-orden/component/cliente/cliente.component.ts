@@ -90,7 +90,7 @@ Ordenes: Ordenes [] = [];
             this.clienterouter.params.subscribe(params =>{
               console.log(params.ordenesId);
               this.clienteserv.Entregado(params.ordenesId,this.valor)
-              .subscribe( async response =>{
+              .subscribe( async (response) =>{
                 console.log('se Entrego El pedido');
 
                 const alert = await this.alertController.create({
@@ -136,7 +136,7 @@ Ordenes: Ordenes [] = [];
         handler: () =>{
           this.clienterouter.params.subscribe(params =>{
             this.clienteserv.cancelado(params.ordenesId)
-            .subscribe( async response =>{
+            .subscribe( async (response) =>{
 
               const alert = await this.alertController.create({
                 cssClass: 'my-custom-class',
