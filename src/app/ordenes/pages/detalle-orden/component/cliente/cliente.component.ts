@@ -105,6 +105,8 @@ Ordenes: Ordenes [] = [];
                    }
                   }]
                 });
+
+                await alert.present();
               })
 
             })
