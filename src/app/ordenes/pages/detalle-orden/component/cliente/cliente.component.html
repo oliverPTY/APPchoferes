@@ -1,78 +1,79 @@
-<ul class="list-group" *ngFor="let item of datos">
-    <li class="list-group-item ">
-        <div class="md-v-line"></div>
-        <ion-icon id="IconDetalle" name="barcode-outline" class="mr-5"></ion-icon><strong>Orden:</strong> {{item.orden}}
-    </li>
-    <li class="list-group-item ">
-        <div class="md-v-line"></div>
-        <ion-icon id="IconDetalle" name="person-circle-outline" class="mr-5"></ion-icon><strong>Nombre:</strong> {{ item.nombre}} {{ item.apellido}}
-    </li>
-    <li class="list-group-item ">
-        <div class="md-v-line"></div>
-        <ion-icon id="IconDetalle" name="call-outline" class="mr-5"></ion-icon><strong>Telefonos:</strong> {{ item.telefono }}
-    </li>
-    <li class="list-group-item ">
-        <div class="md-v-line"></div>
-        <ion-icon id="IconDetalle" name="card-outline" class="mr-5"></ion-icon><strong>Metodo:</strong>
-        <div id="SelectMetodo">
-            <ion-item>
-                <ion-select [(ngModel)]="valor" (change)="entregad()">
-                    <ion-select-option value="Tarjeta de Credito">Tarjeta de Credito</ion-select-option>
-                    <ion-select-option value="Online">Online</ion-select-option>
-                    <ion-select-option value="Clave">Clave</ion-select-option>
-                    <ion-select-option value="Efectivo">Efectivo</ion-select-option>
-                    <ion-select-option value="ACH">ACH</ion-select-option>
-                    <ion-select-option value="Cheque">Cheque</ion-select-option>
-                    <ion-select-option value="Vale Panama">Vale Panama</ion-select-option>
-                    <ion-select-option value="Vale BG">Vale BG</ion-select-option>
-                    <ion-select-option value="Credito Riba">Credito Riba</ion-select-option>
-                </ion-select>
-            </ion-item>
-        </div>
-    </li>
-    <li class="list-group-item ">
-        <div class="md-v-line"></div>
-        <ion-icon id="IconDetalle" name="pricetags-outline" class="mr-5"></ion-icon><strong>TipoT:</strong> {{ item.TipoT }}
-    </li>
-    <li class="list-group-item ">
-        <div class="md-v-line"></div>
-        <ion-icon id="IconDetalle" name="keypad-outline" class="mr-5"></ion-icon><strong>Digitos:</strong> {{ item.Digitos}}
-    </li>
-    <li class="list-group-item ">
-        <div class="md-v-line"></div>
-        <ion-icon id="IconDetalle" name="cash-outline" class="mr-5"></ion-icon><strong>Total:</strong> ${{item.TotalO}}
-    </li>
-    <li class="list-group-item" *ngIf="item.Verificado == 0; else verificadoSi">
-        <div class="md-v-line"></div>
-        <ion-icon id="IconDetalle" name="checkmark-done-outline" class="mr-5"></ion-icon><strong>Verificado:</strong> No Verificado
-    </li>
-    <ng-template #verificadoSi>
-        <li class="list-group-item">
+<div *ngFor="let item of datos">
+    <ul class="list-group">
+        <li class="list-group-item ">
             <div class="md-v-line"></div>
-            <ion-icon id="IconDetalle" name="checkmark-done-outline" class="mr-5"></ion-icon><strong>Verificado:</strong> Verificado
+            <ion-icon id="IconDetalle" name="barcode-outline" class="mr-5"></ion-icon><strong>Orden:</strong> {{item.orden}}
         </li>
-    </ng-template>
-    <section id="BotonesPosition">
-        <li class="list-group-item" *ngIf="item.Verificado == 0; else yaVerificado">
-            <ion-button type="submit" color="secondary" fill="solid" expand="full" (click)="data()">
-                <ion-icon name="information-circle-outline"></ion-icon>
-                Verificar Cliente
-            </ion-button>
+        <li class="list-group-item ">
+            <div class="md-v-line"></div>
+            <ion-icon id="IconDetalle" name="person-circle-outline" class="mr-5"></ion-icon><strong>Nombre:</strong> {{ item.nombre}} {{ item.apellido}}
         </li>
-        <ng-template #yaVerificado>
+        <li class="list-group-item ">
+            <div class="md-v-line"></div>
+            <ion-icon id="IconDetalle" name="call-outline" class="mr-5"></ion-icon><strong>Telefonos:</strong> {{ item.telefono }}
+        </li>
+        <li class="list-group-item ">
+            <div class="md-v-line"></div>
+            <ion-icon id="IconDetalle" name="card-outline" class="mr-5"></ion-icon><strong>Metodo:</strong>
+            <div id="SelectMetodo">
+                <ion-item>
+                    <ion-select [(ngModel)]="valor" (change)="entregad()">
+                        <ion-select-option value="Tarjeta de Credito">Tarjeta de Credito</ion-select-option>
+                        <ion-select-option value="Online">Online</ion-select-option>
+                        <ion-select-option value="Clave">Clave</ion-select-option>
+                        <ion-select-option value="Efectivo">Efectivo</ion-select-option>
+                        <ion-select-option value="ACH">ACH</ion-select-option>
+                        <ion-select-option value="Cheque">Cheque</ion-select-option>
+                        <ion-select-option value="Vale Panama">Vale Panama</ion-select-option>
+                        <ion-select-option value="Vale BG">Vale BG</ion-select-option>
+                        <ion-select-option value="Credito Riba">Credito Riba</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </div>
+        </li>
+        <li class="list-group-item ">
+            <div class="md-v-line"></div>
+            <ion-icon id="IconDetalle" name="pricetags-outline" class="mr-5"></ion-icon><strong>TipoT:</strong> {{ item.TipoT }}
+        </li>
+        <li class="list-group-item ">
+            <div class="md-v-line"></div>
+            <ion-icon id="IconDetalle" name="keypad-outline" class="mr-5"></ion-icon><strong>Digitos:</strong> {{ item.Digitos}}
+        </li>
+        <li class="list-group-item ">
+            <div class="md-v-line"></div>
+            <ion-icon id="IconDetalle" name="cash-outline" class="mr-5"></ion-icon><strong>Total:</strong> ${{item.TotalO}}
+        </li>
+        <li class="list-group-item" *ngIf="item.Verificado == 0; else verificadoSi">
+            <div class="md-v-line"></div>
+            <ion-icon id="IconDetalle" name="checkmark-done-outline" class="mr-5"></ion-icon><strong>Verificado:</strong> No Verificado
+        </li>
+        <ng-template #verificadoSi>
             <li class="list-group-item">
-                <ion-button type="submit" color="secondary" fill="solid" expand="full" (click)="data()" hidden>
-                    <ion-icon name="information-circle-outline"></ion-icon>
-                    Verificar Cliente
-                </ion-button>
+                <div class="md-v-line"></div>
+                <ion-icon id="IconDetalle" name="checkmark-done-outline" class="mr-5"></ion-icon><strong>Verificado:</strong> Verificado
             </li>
         </ng-template>
+
+
+    </ul>
+    <br>
+    <section id="BotonesPosition">
+
+        <ion-button id="sizeBoton" (click)="data()" *ngIf="item.Verificado == 0; else yaVerificado">
+            <ion-icon id="iconDetalleAccion" name="information-circle-outline"></ion-icon>
+            Verificar Cliente
+        </ion-button>
+
+        <ng-template #yaVerificado>
+
+            <ion-button id="sizeBoton" (click)="data()" hidden>
+                <ion-icon id="iconDetalleAccion" name="information-circle-outline"></ion-icon>
+                Verificar Cliente
+            </ion-button>
+
+        </ng-template>
     </section>
-
-</ul>
-<br>
-
-
+</div>
 
 
 <br>

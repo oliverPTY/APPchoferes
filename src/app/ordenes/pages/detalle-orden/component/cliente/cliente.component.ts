@@ -187,7 +187,24 @@ Ordenes: Ordenes [] = [];
     this.clienterouter.params.pipe(
         switchMap((params)=>
         this.Verifivador.VerificacionCliente(params.ordenesId))
-      ).subscribe(paramss=>{
+      ).subscribe( async (paramss)=>{
+        const alert = await this.alertCtrl.create({
+          cssClass: 'my-custom-class',
+          header: 'ADVERTENCIA',
+          subHeader: 'USUARIO VERIFICADO CON EXITO',
+          buttons: [
+            {
+              text:'ok',
+              handler:()=>{
+                window.location.reload()
+              }
+            }
+          ]
+          
+        });
+    
+        await alert.present();
+   
     
       },(err)=>{
       this.hayError=true
@@ -195,15 +212,7 @@ Ordenes: Ordenes [] = [];
       })
       
     
-       const alert = await this.alertCtrl.create({
-         cssClass: 'my-custom-class',
-         header: 'ADVERTENCIA',
-         subHeader: 'USUARIO VERIFICADO CON EXITO',
-         buttons: ['OK']
-       });
    
-       await alert.present();
-  
      }
  
      
