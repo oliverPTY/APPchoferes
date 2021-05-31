@@ -1,62 +1,59 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-buttons slot="end">
-            
-          </ion-buttons>
         <ion-title>
             <div id="title">
                 Ordenes
             </div>
         </ion-title>
+        <ion-buttons slot="end">
+            <ion-back-button id="title" text="Salir" style="margin-right: 10px ;" mode="ios" defaultHref="/">
+            </ion-back-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content
-          pullingIcon="chevron-down-circle-outline"
-          pullingText="Refrescar"
-          refreshingSpinner="lines"
-          refreshingText="Cargando...">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Refrescar" refreshingSpinner="lines" refreshingText="Cargando...">
         </ion-refresher-content>
-      </ion-refresher>
+    </ion-refresher>
 
-        <ion-list-header *ngIf="ordenes!='' ">
-        </ion-list-header>
-        <ion-list-header *ngIf="ordenes=='' ">
-            No hay Ordenes Disponibles
-        </ion-list-header>
+    <ion-list-header *ngIf="ordenes!='' ">
+    </ion-list-header>
+    <ion-list-header *ngIf="ordenes=='' ">
+        No hay Ordenes Disponibles
+    </ion-list-header>
 
-   
-                <!--Card-->
+
+    <!--Card-->
     <mdb-card *ngFor="let item of ordenes" [routerLink]="['/ordenesDetalles',item.idorden]" cascade="true" id="cardOrdenesView">
 
         <!--Card image-->
         <div class="view view-cascade gradient-card-header blue-gradient text-center" id="CardOrden">
-          <h2 class="card-header-title"> <h2>
-            <ion-icon name="ticket-outline" id="iconoCabecera2"></ion-icon> Orden <strong> {{ item.idorden}}</strong></h2></h2>
+            <h2 class="card-header-title">
+                <h2>
+                    <ion-icon name="ticket-outline" id="iconoCabecera2"></ion-icon> Orden <strong> {{ item.idorden}}</strong></h2>
+            </h2>
         </div>
         <!--/Card image-->
-  
+
         <mdb-card-body cascade="true" class="text-center">
-          <!--Card content-->
-  
-          <mdb-card-text>
-            <strong>Direccion:</strong>
-     
-             {{item.Direccion}} 
-          </mdb-card-text>
-    
+            <!--Card content-->
+
+            <mdb-card-text>
+                <strong>Direccion:</strong> {{item.Direccion}}
+            </mdb-card-text>
+
         </mdb-card-body>
 
-  
-      </mdb-card>
-      <br>
 
-      
-     
-      
-        
+    </mdb-card>
+    <br>
+
+
+
+
+
 
 </ion-content>
