@@ -15,8 +15,9 @@
 <ion-content>
 
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Refrescar" refreshingSpinner="lines" refreshingText="Cargando...">
+        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Refrescar" refreshingSpinner="lines" refreshingText="">
         </ion-refresher-content>
+        <br><br>
     </ion-refresher>
 
     <ion-list-header *ngIf="ordenes!='' ">
@@ -49,11 +50,5 @@
 
 
     </mdb-card>
-    <br>
-
-
-
-
-
 
 </ion-content>
