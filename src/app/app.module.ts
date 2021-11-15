@@ -12,7 +12,7 @@ import {  HttpClientModule } from '@angular/common/http';
 import { OrdenesPageModule } from './ordenes/ordenes.module';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 
@@ -35,7 +35,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     
 
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Geolocation
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

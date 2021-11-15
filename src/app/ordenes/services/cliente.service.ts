@@ -47,6 +47,19 @@ export class ClienteService {
   return this.http.put<any>(paramsEntregado,obj);
   }
     
+
+  //UBICACION CLIENTE
+
+  apiUrl = 'http://131.108.7.230:5088/apimoto/public/api/asignargps';
+  ubicacionCliente(orden: string, latitud: number, longitud: number){
+    const params = `${this.apiUrl}/${orden}/${latitud}/${longitud}`;
+    const obj = {
+      Headers:{
+        'Content-Type': 'application/x-ww-form-urlencoded'
+      }
+    }
+   return this.http.post(params, obj); 
+  }
   
 
 

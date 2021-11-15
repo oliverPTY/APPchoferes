@@ -6,8 +6,10 @@ import { switchMap } from 'rxjs/operators';
 import { OrdenService } from '../../../../services/orden.service';
 import { Ordenes } from '../../../../interfaces/orden.interface';
 import { VerificaClienteService } from '../../../../services/verifica-cliente.service';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 import {AlertController, NavController} from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cliente',
@@ -21,8 +23,11 @@ export class ClienteComponent implements OnInit{
 hayError: Boolean=false;
 datos: Cliente []=[];
 Ordenes: Ordenes [] = [];
+idOrden: string = '';
   constructor(public alertCtrl: AlertController,private clienterouter:ActivatedRoute , private clienteserv:ClienteService, private ordenes:OrdenService, private Verifivador:VerificaClienteService,public alertController: AlertController
-    ,private navCtrl: NavController) { }
+    ,private navCtrl: NavController,private geolocation: Geolocation, public loadingController: LoadingController
+    ,
+    ) { }
   
  
 
@@ -33,6 +38,7 @@ Ordenes: Ordenes [] = [];
       this.clienteserv.datosClienete(params.ordenesId))
     ).subscribe(paramss=>{
       this.datos=paramss;
+     this.idOrden = paramss['0'].orden;
     },(err)=>{
       this.hayError=true
       this.datos=[];
@@ -214,10 +220,75 @@ Ordenes: Ordenes [] = [];
     
    
      }
- 
      
+
+     latitud: number;
+     longitud: number;
      
- 
+     Ubicacion(){
+      this.presentLoading();
+      this.geolocation.getCurrentPosition().then(resp => {
+        this.longitud = resp.coords.latitude;
+        this.latitud = resp.coords.longitude;        
+        this.clienteserv.ubicacionCliente(this.idOrden, this.latitud, this.longitud).subscribe(async (data)=>{
+          console.log(data);
+          if(data==1){
+       
+            const alert = await this.alertController.create({
+              cssClass: '',
+              header: 'Ubicación Actualizada',
+              subHeader: '',
+              message: 'Preciona "OK" para continuar',
+              mode:'ios',
+              buttons: [{
+               text:'OK',
+               handler:() =>{
+               }
+              }]
+            });
+
+            await alert.present();
+          }
+          else{
+
+            const alert = await this.alertController.create({
+              cssClass: '',
+              header: 'ERROR!!!!',
+              subHeader: '',
+              message: 'No se pudo actualizar ubicación',
+              mode:'ios',
+              buttons: [{
+               text:'OK',
+               handler:() =>{
+               }
+              }]
+            });
+
+            await alert.present();
+
+          }
+          this.loadingController.dismiss();
+        },(err)=>{
+          console.log(err);
+          
+        })     
+      }).catch((error) => {
+        console.log('Error getting location', error);
+      });
+
+       
+     }
+
+     async presentLoading() {
+      const loading = await this.loadingController.create({
+        cssClass: '',
+        message: 'Por favor espere...',
+        mode: 'ios'
+      });
+      await loading.present();
+    }
+
+     
  
  
    
